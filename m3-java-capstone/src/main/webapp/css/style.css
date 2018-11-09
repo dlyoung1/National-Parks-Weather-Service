@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.headerimg {
+	display: inline-block;
+	width: 500px;
+}
+
+.headerlinks {
+	display: inline-block;
+	width: 500px;
+}
+
+#logo {
+	max-width: 400px;
+}
+
+body {
+	font-family: arial, fantasy;
+	background-color: olive;
+	color: black;
+	padding: 20px;
+}
+
+#parkimg {
+	width: 500px;
+	display: inline-block;
+}
+
+#parkinfo {
+	width: 800px;
+	display: inline-block;
+	padding-left: 20px;
+	vertical-align: top;
+}
+
+.container {
+	background-color: white;
+}
+
+#park-details-img {
+	width: 500px;
+	display: inline-block;
+}
+
+#park-details-info {
+	width: 800px;
+	display: inline-block;
+	vertical-align: top;
+}
