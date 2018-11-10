@@ -1,17 +1,29 @@
 @charset "UTF-8";
 
-.headerimg {
-	display: inline-block;
-	width: 500px;
-}
-
-.headerlinks {
-	display: inline-block;
-	width: 500px;
+/*                          header style                      */
+header {
+	width: 100%;
 }
 
 #logo {
-	max-width: 400px;
+	width: 400px;
+}
+
+.headerlinks {
+	float: right;
+	padding-right: 20px;
+}
+
+.headerlinks ol {
+	list-style: none;
+}
+
+.links {
+	display: inline-block;
+	font-size: 30px;
+	padding-right: 30px;
+	padding-top: 10px;
+	font-weight: bold;
 }
 
 body {
@@ -21,6 +33,12 @@ body {
 	padding: 20px;
 }
 
+.container {
+	background-color: white;
+	padding: 10px;
+}
+
+/*                         parkHome style                     */
 #parkimg {
 	width: 500px;
 	display: inline-block;
@@ -33,17 +51,52 @@ body {
 	vertical-align: top;
 }
 
-.container {
-	background-color: white;
-}
-
+/*                         parkDetails style                   */
 #park-details-img {
 	width: 500px;
 	display: inline-block;
 }
 
 #park-details-info {
-	width: 800px;
+	width: 850px;
 	display: inline-block;
 	vertical-align: top;
 }
+
+#park-details-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#park-details-table td {
+	padding: 2px;
+	vertical-align: top;
+}
+
+#park-details-table tr:nth-child(odd) {
+	background: lightgrey;
+}
+
+#line {
+	height: 10px;
+	border: 0;
+	box-shadow: 0 10px 10px -10px #808000 inset;
+}
+
+/*                              weather style                            */
+#forecast {
+	text-align: center;
+	padding: 20px;
+}
+
+#forecast table {
+	margin-left: auto;
+	margin-right: auto;
+	width: 800px;
+}
+
+#forecast table tr:nth-child(odd) {
+	background: lightyellow;
+}
+
+

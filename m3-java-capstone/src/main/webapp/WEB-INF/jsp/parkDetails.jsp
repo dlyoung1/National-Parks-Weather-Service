@@ -2,32 +2,76 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
 
 
-	<section>
-	
+<section>
 	<div id="park-details-img">
 		<img src="img/parks/${parkDetails.parkCode}.jpg">
 	</div>
 	
 	<div id="park-details-info">
-		Park Name: ${parkDetails.parkName}<br>
-		State: ${parkDetails.parkState}<br>
-		Acreage: ${parkDetails.acreage}<br>
-		Elevation: ${parkDetails.elevation}<br>
-		Miles of Trail: ${parkDetails.milesOfTrail}<br>
-		Number of Campsites: ${parkDetails.numberOfCampsites}<br>
-		Climate: ${parkDetails.climate}<br>
-		Year Founded: ${parkDetails.yearFounded}<br>
-		Annual Visitor Count: ${parkDetails.annualVisitorCount}<br>
-		Inspirational Quote: "${parkDetails.inspirationalQuote}"<br>
-		- ${parkDetails.inspirationalQuoteSource}<br>
-		Description: ${parkDetails.parkDescription}<br>
-		Entry Fee: ${parkDetails.entryFee}<br>
-		Number of Species: ${parkDetails.numberOfSpecies}<br>
-		
+		<table id="park-details-table">
+			<tr>
+				<td>Park Name: </td>
+				<td>${parkDetails.parkName}</td>
+			</tr>
+			<tr>
+				<td>State: </td>
+				<td>${parkDetails.parkState}</td>
+			</tr>
+			<tr>
+				<td>Acreage: </td>
+				<td>${parkDetails.acreage}</td>
+			</tr>
+			<tr>
+				<td>Elevation: </td>
+				<td>${parkDetails.elevation}</td>
+			</tr>
+			<tr>
+				<td>Miles of Trail: </td>
+				<td>${parkDetails.milesOfTrail}</td>
+			</tr>
+			<tr>
+				<td>Number of Campsites: </td>
+				<td>${parkDetails.numberOfCampsites}</td>
+			</tr>
+			<tr>
+				<td>Climate: </td>
+				<td>${parkDetails.climate}</td>
+			</tr>
+			<tr>
+				<td>Year Founded: </td>
+				<td>${parkDetails.yearFounded}</td>
+			</tr>
+			<tr>
+				<td>Annual Visitor Count: </td>
+				<td>${parkDetails.annualVisitorCount}</td>
+			</tr>
+			<tr>
+				<td>Inspirational Quote: </td>
+				<td>"${parkDetails.inspirationalQuote}"</td>
+			</tr>
+			<tr>
+				<td>Quote Source: </td>
+				<td>${parkDetails.inspirationalQuoteSource}</td>
+			</tr>
+			<tr>
+				<td>Description: </td>
+				<td>${parkDetails.parkDescription}</td>
+			</tr>
+			<tr>
+				<td>Entry Fee: </td>
+				<td>$${parkDetails.entryFee}</td>
+			</tr>
+			<tr>
+				<td>Number of Species: </td>
+				<td>${parkDetails.numberOfSpecies}</td>
+			</tr>
+		</table>
 	</div>
 	
-	</section>
+	<hr id="line">
+	
+</section>
 
-
+<c:import url="/weather?${parkCode}.jsp"/>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp"/>

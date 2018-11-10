@@ -43,7 +43,6 @@ public class JDBCParkDAO implements ParkDAO {
 		String sqlParkDetails = "SELECT * FROM park WHERE parkcode = ? ";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlParkDetails, parkCode.toUpperCase());
 		while(results.next()) {
-			
 			park.setParkCode(results.getString("parkcode").toLowerCase());
 			park.setParkName(results.getString("parkname"));
 			park.setParkState(results.getString("state"));
@@ -59,7 +58,6 @@ public class JDBCParkDAO implements ParkDAO {
 			park.setParkDescription(results.getString("parkdescription"));
 			park.setEntryFee(results.getInt("entryfee"));
 			park.setNumberOfSpecies(results.getInt("numberofanimalspecies"));
-			
 		}
 		return park;
 	}

@@ -10,16 +10,17 @@
 </head>
 
 <body>
-
-<div id="headerimg">
-	<img id="logo" src="img/logo.png">
-</div>
-
-<div id="headerlinks">
-	<nav>
-		<a href="parkHome">Home | </a>
-		<a href="survey">Survey</a>
-	</nav>
-</div>
+	<header>
+		<img id="logo" src="img/logo.png">
+			
+		<nav class="headerlinks">
+			<ol>
+				<c:url var="parkURL" value="/"/>
+				<li class="links"><a href="${parkURL}">Home </a></li>
+				<c:url var="surveyURL" value="/survey"/>
+				<li class="links"><a href="${surveyURL}">Survey</a></li>
+			</ol>
+		</nav>
+	</header>
 
 <div class="container">
