@@ -3,6 +3,7 @@
 
 <h1>Favorite Parks</h1>
 
+<!-- surveyResult loops through survey_response DB for the image file name and vote count. Also obtains park name from park DB -->
 <c:forEach var="results" items="${surveys}" varStatus="loop">
 	<div style="display:inline-block">
 		<img src="img/parks/${results.parkCode.toLowerCase()}.jpg"/>
