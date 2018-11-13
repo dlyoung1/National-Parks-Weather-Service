@@ -8,16 +8,22 @@
 		<h3>5 Day Forecast for ${parkDetails.parkName}</h3>
 		<table>
 			<tr>
-			<jsp:useBean id="now" class="java.util.Date"/>
-				<th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
-				<c:set var="month" value="${fn:substring(now, 4, 7)}"/>
-				<c:set var="day" value="${fn:substring(now, 8, 10)}"/>
-				<c:set var="newDay" value="${Integer.parseInt(day)}"/>
-				<th>${month} ${newDay + 1}</th>
-				<th>${month} ${newDay + 2}</th>
-				<th>${month} ${newDay + 3}</th>
-				<th>${month} ${newDay + 4}</th>
+				<jsp:useBean id="now" class="java.util.Date"/>
+				<c:set var="oneDay" value="86400000" />
+				
+    				<c:set target="${now}" property="time" value="${now.getTime()}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
+				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
+				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
+				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
+				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
 			</tr>
+			
+			
+			
+			
+			
+			
+			<!-- PLACE IMAGES -->
 			<tr>
 				<c:forEach var="forecast" items="${forecast}">
 					<td>
@@ -44,6 +50,16 @@
 					</td>
 				</c:forEach>
 			</tr>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<!-- HIGH & LOW TEMPERATURE -->
 			<tr>
 				<c:forEach var="forecast" items="${forecast}">
 					<td>High: ${forecast.highTemp}</td>
@@ -54,6 +70,32 @@
 					<td>Low: ${forecast.lowTemp}</td>
 				</c:forEach>
 			</tr>
+			
+			<!-- WEATHER ADVISORIES -->
+			<tr>
+				<c:forEach var="forecast" items="${forecast}">
+					<c:choose>
+						<c:when test="${forecast.forecast == 'partly cloudy'}"><td>partly cloudy</td></c:when>
+						<c:when test="${forecast.forecast == 'thunderstorms'}"><td>Avoid hiking on exposed ridges. Leave your golf clubs at home.</td></c:when>
+						<c:when test="${forecast.forecast == 'sunny'}"><td>Bring your shades!</td></c:when>
+						<c:when test="${forecast.forecast == 'rain'}"><td>Be sure to pack galoshes and a raft.</td></c:when>
+						<c:when test="${forecast.forecast == 'snow'}"><td>Be sure to pack snow shoes and plenty of rations. You don't want to end up like the Donner Party.</td></c:when>
+						<c:when test="${forecast.forecast == 'cloudy'}"><td>cloudy</td></c:when>
+					</c:choose>
+				</c:forEach>
+			</tr>
+			
+			<!-- TEMPERATURE ADVISORIES -->
+			<tr>
+				<c:forEach var="forecast" items="${forecast}">	
+					<c:set var="advice" value="" />
+					<c:if test="${forecast.highTemp > 75}"><c:set var="advice" value="Bring extra water. " /></c:if>
+					<c:if test="${(forecast.highTemp - forecast.lowTemp) > 20}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
+					<c:if test="${forecast.lowTemp < 20}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
+					<td>${advice}</td>
+				</c:forEach>
+			</tr>			
+			
 		</table>
 	</div>
 

@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/jsp/common/header.jsp"/>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
 <section>
@@ -19,19 +20,19 @@
 			</tr>
 			<tr>
 				<td>Acreage: </td>
-				<td>${parkDetails.acreage}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.acreage}" /></td>
 			</tr>
 			<tr>
 				<td>Elevation: </td>
-				<td>${parkDetails.elevation}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.elevation}" /> ft</td>
 			</tr>
 			<tr>
 				<td>Miles of Trail: </td>
-				<td>${parkDetails.milesOfTrail}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.milesOfTrail}" /></td>
 			</tr>
 			<tr>
 				<td>Number of Campsites: </td>
-				<td>${parkDetails.numberOfCampsites}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.numberOfCampsites}" /></td>
 			</tr>
 			<tr>
 				<td>Climate: </td>
@@ -43,7 +44,7 @@
 			</tr>
 			<tr>
 				<td>Annual Visitor Count: </td>
-				<td>${parkDetails.annualVisitorCount}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.annualVisitorCount}" /></td>
 			</tr>
 			<tr>
 				<td>Inspirational Quote: </td>
@@ -63,7 +64,7 @@
 			</tr>
 			<tr>
 				<td>Number of Species: </td>
-				<td>${parkDetails.numberOfSpecies}</td>
+				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.numberOfSpecies}" /></td>
 			</tr>
 		</table>
 	</div>
