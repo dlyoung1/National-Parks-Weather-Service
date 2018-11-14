@@ -3,7 +3,15 @@
 
 <h1>National Park Survey</h1>
 
+<!-- survey requires input on all fields and alerts if an invalid email is entered -->
 <form action="surveyInput" method="POST">
+	<c:if test="${not empty errorMessages}">
+		<c:forEach var="message" items="${errorMessages}">
+			<div class="alert" role="alert">
+				${message}
+			</div>
+		</c:forEach>
+	</c:if>
 	<div class="survey-form">
 		<label for="parkCode">Favorite National Park: </label>
 			<select id="parkCode" name="parkCode">
