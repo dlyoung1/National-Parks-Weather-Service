@@ -3,6 +3,11 @@
 
 <h1>Favorite Parks</h1>
 
+<div>
+	<c:url var="surveyInput" value="/surveyInput"/>
+	<a href="${surveyInput}"><button>Vote for your favorite Park!</button></a>
+</div>
+
 <!-- surveyResult loops through survey_response DB for the image file name and vote count. Also obtains park name from park DB -->
 <c:forEach var="results" items="${surveys}" varStatus="loop">
 	<div style="display:inline-block">

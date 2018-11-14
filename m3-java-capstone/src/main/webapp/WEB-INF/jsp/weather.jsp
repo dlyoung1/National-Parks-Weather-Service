@@ -6,6 +6,11 @@
 	
 	<div id="forecast">
 		<h3>5 Day Forecast for ${parkDetails.parkName}</h3>
+		
+		<!-- SENDS SESSION DATA TO CONTROLLER FOR TEMPERATURE CONVERSION. -->
+		<c:url var="convertTemp" value="/weather"/>
+		<a href="${convertTemp}"><button>Convert to ${calcScale}</button></a><br><br>
+		
 		<table>
 			<tr>
 				<jsp:useBean id="now" class="java.util.Date"/>
@@ -62,12 +67,12 @@
 			<!-- HIGH & LOW TEMPERATURE -->
 			<tr>
 				<c:forEach var="forecast" items="${forecast}">
-					<td>High: ${forecast.highTemp}</td>
+					<td>High: ${forecast.highTemp} °${displayScale}</td>
 				</c:forEach>
 			</tr>
 			<tr>
 				<c:forEach var="forecast" items="${forecast}">
-					<td>Low: ${forecast.lowTemp}</td>
+					<td>Low: ${forecast.lowTemp} °${displayScale}</td>
 				</c:forEach>
 			</tr>
 			

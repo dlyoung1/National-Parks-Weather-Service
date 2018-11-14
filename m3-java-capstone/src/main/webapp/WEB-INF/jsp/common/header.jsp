@@ -17,7 +17,7 @@
 			<ol>
 				<c:url var="parkURL" value="/"/>
 				<li class="links"><a href="${parkURL}">Home </a></li>
-				<c:url var="surveyURL" value="/survey"/>
+				<c:url var="surveyURL" value="/surveyResult"/>
 				<li class="links"><a href="${surveyURL}">Survey</a></li>
 			</ol>
 		</nav>
