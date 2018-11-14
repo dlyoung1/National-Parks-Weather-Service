@@ -19,12 +19,7 @@ public class ParkController {
 	@Autowired
 	private ParkDAO park;
 	
-<<<<<<< HEAD
-
-	
-=======
 //	Accesses park DB and returns general park info on the home page
->>>>>>> d0fa02189255fcfd8349ab32a54aece4c30df397
 	@RequestMapping("/")
 	public String displayParks(ModelMap map) {
 		List<Park> parks = park.getAllParks();
