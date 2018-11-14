@@ -31,9 +31,10 @@ public class ParkController {
 	@RequestMapping(path="/parkDetails", method=RequestMethod.GET)
 	public String displayParkDetails(HttpSession session,
 									@RequestParam String parkCode) {
-		Park parkDetails = park.getParkDetails(parkCode);
+		Park parkDetails = park.getParkDetails(parkCode.toUpperCase());
 		session.setAttribute("parkDetails", parkDetails);
 		session.setAttribute("parkCode", parkCode);
+		session.setAttribute("calcScale", "F");
 		return "parkDetails";
 	}
 
