@@ -92,13 +92,26 @@
 			
 			<!-- TEMPERATURE ADVISORIES -->
 			<tr>
-				<c:forEach var="forecast" items="${forecast}">	
-					<c:set var="advice" value="" />
-					<c:if test="${forecast.highTemp > 75}"><c:set var="advice" value="Bring extra water. " /></c:if>
-					<c:if test="${(forecast.highTemp - forecast.lowTemp) > 20}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
-					<c:if test="${forecast.lowTemp < 20}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
-					<td>${advice}</td>
-				</c:forEach>
+				<c:choose>
+					<c:when test="${displayScale == 'F'}">
+						<c:forEach var="forecast" items="${forecast}">	
+							<c:set var="advice" value="" />
+							<c:if test="${forecast.highTemp > 75}"><c:set var="advice" value="Bring extra water. " /></c:if>
+							<c:if test="${(forecast.highTemp - forecast.lowTemp) > 20}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
+							<c:if test="${forecast.lowTemp < 20}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
+							<td>${advice}</td>
+						</c:forEach>
+					</c:when>
+					<c:when test="${displayScale == 'C'}">
+						<c:forEach var="forecast" items="${forecast}">	
+							<c:set var="advice" value="" />
+							<c:if test="${forecast.highTemp > 24}"><c:set var="advice" value="Bring extra water. " /></c:if>
+							<c:if test="${(forecast.highTemp - forecast.lowTemp) > 11}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
+							<c:if test="${forecast.lowTemp < -6}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
+							<td>${advice}</td>
+						</c:forEach>
+						</c:when>
+				</c:choose>
 			</tr>			
 			
 		</table>
