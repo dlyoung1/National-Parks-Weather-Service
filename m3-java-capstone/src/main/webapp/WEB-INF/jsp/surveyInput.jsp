@@ -78,7 +78,7 @@
 				<option value="West Virginia">West Virginia</option>
 				<option value="Wisconsin">Wisconsin</option>
 				<option value="Wyoming">Wyoming</option>
-			</select>	
+			</select>
 	</div>
 	<div class="survey-form">
 		<label for="activityLevel">Physical Activity Level: </label>
@@ -87,8 +87,8 @@
 			<input type="radio" name="activityLevel" id="activityLevel" value="active"> Active&emsp;
 			<input type="radio" name="activityLevel" id="activityLevel" value="extremelyactive"> Extremely Active
 	</div>
-	<div class="survey-form">
-		<input type="submit" value="Submit"/>
+	<div class="survey-form"><span id="submit-form">
+		<input type="submit" value="Submit"/></span>
 	</div>
 </form>
 

@@ -127,4 +127,90 @@ body {
 	background: lightyellow;
 }
 
+/*                              surveyInput style                            */
 
+
+.alert {
+	color: red;
+}
+
+.survey-form {
+	padding-top: 20px;
+}
+
+.survey-form label {
+	display: inline-block;
+	text-align: right;
+	width: 200px;
+}
+
+#submit-form {
+	padding-left: 200px;
+}
+
+/*                              surveyResults style                            */
+.survey-button {
+	text-align: center;
+}
+
+.survey-button button {
+	font-size: 20px;
+	border-radius: 10px;
+	background-color: DarkOliveGreen;
+	color: white;
+	text-shadow: 2px 2px 4px #000000;
+	box-shadow: 2px 2px 4px #000000;
+}
+
+.survey-button button:hover {
+	background-color: OliveDrab;
+	}
+
+.survey-button button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.result-div {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.result-div img {
+	width: 150px;
+	border: 3px solid #000000;
+}
+
+.result-div h3 {
+	padding-left: 10px;
+}
+
+#count {
+	color: crimson;
+}
+
+#favorite-bar {
+	position: relative;
+	border: 1px solid darkgray;
+	padding-left: 10px;
+	padding-bottom: 5px;
+}
+
+#name {
+	text-align: center;
+	font-size: 13px;
+	display: inline-block;
+}
+
+#count-bar-container {
+	display: inline-block;
+	width: 100%;
+	height: 10px;
+}
+
+#count-bar {
+	display: block;
+	background-color: maroon;
+	height: 10px;
+}
