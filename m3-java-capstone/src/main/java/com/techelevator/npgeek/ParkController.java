@@ -38,6 +38,10 @@ public class ParkController {
 		return "parkDetails";
 	}
 	
+	@RequestMapping(path="/parkSession", method=RequestMethod.GET)
+	public String displayStoredDetails(HttpSession session) {
+		return "parkDetails";
+	}
 
 
 	
