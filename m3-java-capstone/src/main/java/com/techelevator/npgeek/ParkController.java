@@ -17,6 +17,8 @@ public class ParkController {
 	@Autowired
 	private ParkDAO park;
 	
+
+	
 	@RequestMapping("/")
 	public String displayParks(ModelMap map) {
 		List<Park> parks = park.getAllParks();
@@ -31,5 +33,7 @@ public class ParkController {
 		map.put("parkDetails", parkDetails);
 		return "parkDetails";
 	}
+	
+
 
 }

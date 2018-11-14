@@ -24,7 +24,7 @@ public class JDBCParkDAO implements ParkDAO {
 	@Override
 	public List<Park> getAllParks() {
 		List<Park> parks = new ArrayList<Park>();
-		String sqlGetAllParks = "SELECT parkcode, parkname, state, parkdescription FROM park ";
+		String sqlGetAllParks = "SELECT parkcode, parkname, state, parkdescription, inspirationalquote, inspirationalquotesource FROM park ";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllParks);
 		while(results.next()) {
 			Park park = new Park();
@@ -32,6 +32,10 @@ public class JDBCParkDAO implements ParkDAO {
 			park.setParkName(results.getString("parkname"));
 			park.setParkState(results.getString("state"));
 			park.setParkDescription(results.getString("parkdescription"));
+			
+			park.setInspirationalQuote(results.getString("inspirationalquote"));
+			park.setInspirationalQuoteSource(results.getString("inspirationalquotesource"));
+			
 			parks.add(park);
 		}
 		return parks;

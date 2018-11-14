@@ -4,9 +4,22 @@
 
 
 <section>
+	
+	
 	<div id="park-details-img">
 		<img src="img/parks/${parkDetails.parkCode}.jpg">
+		
+		
+					<div id="quotes">
+				<p style="margin: 0; padding: 0;">${parkDetails.inspirationalQuote}</p>
+				<p style="margin: 0; padding: 0; text-align: right">-${parkDetails.inspirationalQuoteSource}</p>
+			</div>
+		
+		
 	</div>
+	
+	
+	
 	
 	<div id="park-details-info">
 		<table id="park-details-table">
@@ -46,14 +59,14 @@
 				<td>Annual Visitor Count: </td>
 				<td><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${parkDetails.annualVisitorCount}" /></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<td>Inspirational Quote: </td>
 				<td>"${parkDetails.inspirationalQuote}"</td>
 			</tr>
 			<tr>
 				<td>Quote Source: </td>
 				<td>${parkDetails.inspirationalQuoteSource}</td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<td>Description: </td>
 				<td>${parkDetails.parkDescription}</td>
