@@ -112,6 +112,13 @@ body {
 }
 
 /*                              weather style                            */
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	text-align: center;	
+}
+
 #forecast {
 	text-align: center;
 	padding: 20px;
@@ -124,7 +131,7 @@ body {
 }
 
 #forecast table tr:nth-child(odd) {
-	background: lightyellow;
+	background: yellow;
 }
 
 

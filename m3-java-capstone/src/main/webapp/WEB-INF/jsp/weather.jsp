@@ -3,8 +3,109 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <section>
+<!-- ----------------------------------------------------------- -->
+
+
 	
-	<div id="forecast">
+	<div style="text-align: center;"><h3>5 Day Forecast for ${parkDetails.parkName}</h3></div>
+	<div style="text-align: center;">
+		<c:url var="convertTemp" value="/parkSession"/>
+		<a href="${convertTemp}"><button>Convert to ${calcScale}</button></a><br><br>
+	</div>
+	
+	<jsp:useBean id="now" class="java.util.Date"/>
+	<c:set var="oneDay" value="86400000" />
+	
+	<div class="grid-container">
+	
+		<c:set target="${now}" property="time" value="${now.getTime()}"/><div><fmt:formatDate value="${now}" pattern="MMM dd"/></div>
+		<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><div><fmt:formatDate value="${now}" pattern="MMM dd"/></div>
+		<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><div><fmt:formatDate value="${now}" pattern="MMM dd"/></div>
+		<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><div><fmt:formatDate value="${now}" pattern="MMM dd"/></div>
+		<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><div><fmt:formatDate value="${now}" pattern="MMM dd"/></div>
+		
+		<c:forEach var="forecast" items="${forecast}">
+			<div>
+				<c:choose>
+					<c:when test="${forecast.forecast == 'partly cloudy'}"><img width=100px src="img/weather/partlyCloudy.png"></c:when>
+					<c:when test="${forecast.forecast == 'thunderstorms'}"><img width=100px src="img/weather/thunderstorms.png"></c:when>
+					<c:when test="${forecast.forecast == 'sunny'}"><img width=100px src="img/weather/sunny.png"></c:when>
+					<c:when test="${forecast.forecast == 'rain'}"><img width=100px src="img/weather/rain.png"></c:when>
+					<c:when test="${forecast.forecast == 'snow'}"><img width=100px src="img/weather/snow.png"></c:when>
+					<c:when test="${forecast.forecast == 'cloudy'}"><img width=100px src="img/weather/cloudy.png"></c:when>
+				</c:choose>
+			</div>
+		</c:forEach>
+		
+		<c:forEach var="forecast" items="${forecast}"><div>High: ${forecast.highTemp} °${displayScale}</div></c:forEach>
+		<c:forEach var="forecast" items="${forecast}"><div>Low: ${forecast.lowTemp} °${displayScale}</div></c:forEach>
+		
+		<c:forEach var="forecast" items="${forecast}"><div><br></div></c:forEach>
+
+		<c:forEach var="forecast" items="${forecast}">
+			
+			<c:set var="weatherAdvice" value="" />
+			<c:choose>
+				<c:when test="${forecast.forecast == 'partly cloudy'}"><c:set var="weatherAdvice" value="Partly cloudy. " /></c:when>
+				<c:when test="${forecast.forecast == 'thunderstorms'}"><c:set var="weatherAdvice" value="Avoid hiking on exposed ridges. Leave your golf clubs at home. " /></c:when>
+				<c:when test="${forecast.forecast == 'sunny'}"><c:set var="weatherAdvice" value="Bring your shades! " /></c:when>
+				<c:when test="${forecast.forecast == 'rain'}"><c:set var="weatherAdvice" value="Be sure to bring galoshes and a raft. " /></c:when>
+				<c:when test="${forecast.forecast == 'snow'}"><c:set var="weatherAdvice" value="Be sure to pack snow shoes and plenty of rations. You don't want to end up like the Donner Party. " /></c:when>
+				<c:when test="${forecast.forecast == 'cloudy'}"><c:set var="weatherAdvice" value="Cloudy. " /></c:when>
+			</c:choose>
+			
+			<div>${weatherAdvice}</div>
+		</c:forEach>
+		
+		<c:choose>
+			<c:when test="${displayScale == 'F'}">
+				<c:forEach var="forecast" items="${forecast}">	
+					<c:set var="advice" value="" />
+					<c:if test="${forecast.highTemp > 75}"><c:set var="advice" value="Bring extra water. " /></c:if>
+					<c:if test="${(forecast.highTemp - forecast.lowTemp) > 20}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
+					<c:if test="${forecast.lowTemp < 20}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
+					<div>${advice}</div>
+				</c:forEach>
+			</c:when>
+			<c:when test="${displayScale == 'C'}">
+				<c:forEach var="forecast" items="${forecast}">	
+					<c:set var="advice" value="" />
+					<c:if test="${forecast.highTemp > 24}"><c:set var="advice" value="Bring extra water. " /></c:if>
+					<c:if test="${(forecast.highTemp - forecast.lowTemp) > 11}"><c:set var="advice" value="${advice}  Breathable layers are advised. " /></c:if>
+					<c:if test="${forecast.lowTemp < -6}"><c:set var="advice" value="${advice}  Watch for signs of frostbite." /></c:if>
+					<div>${advice}</div>
+				</c:forEach>
+			</c:when>
+		</c:choose>
+	</div>
+	
+	
+	
+
+		
+				
+		
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- ORIGINAL----------------------------------------------------------- -->
+	
+	<%-- <div id="forecast">
 		<h3>5 Day Forecast for ${parkDetails.parkName}</h3>
 		
 		<!-- SENDS SESSION DATA TO CONTROLLER FOR TEMPERATURE CONVERSION. -->
@@ -22,58 +123,29 @@
 				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
 				<c:set target="${now}" property="time" value="${now.getTime() + oneDay}"/><th><fmt:formatDate value="${now}" pattern="MMM dd"/></th>
 			</tr>
-			
-			
-			
-			
-			
-			
+
 			<!-- PLACE IMAGES -->
 			<tr>
 				<c:forEach var="forecast" items="${forecast}">
 					<td>
 					<c:choose>
-						<c:when test="${forecast.forecast == 'partly cloudy'}">
-							<img width=100px src="img/weather/partlyCloudy.png">
-						</c:when>
-						<c:when test="${forecast.forecast == 'thunderstorms'}">
-							<img width=100px src="img/weather/thunderstorms.png">
-						</c:when>
-						<c:when test="${forecast.forecast == 'sunny'}">
-							<img width=100px src="img/weather/sunny.png">
-						</c:when>
-						<c:when test="${forecast.forecast == 'rain'}">
-							<img width=100px src="img/weather/rain.png">
-						</c:when>
-						<c:when test="${forecast.forecast == 'snow'}">
-							<img width=100px src="img/weather/snow.png">
-						</c:when>
-						<c:when test="${forecast.forecast == 'cloudy'}">
-							<img width=100px src="img/weather/cloudy.png">
-						</c:when>
+						<c:when test="${forecast.forecast == 'partly cloudy'}"><img width=100px src="img/weather/partlyCloudy.png"></c:when>
+						<c:when test="${forecast.forecast == 'thunderstorms'}"><img width=100px src="img/weather/thunderstorms.png"></c:when>
+						<c:when test="${forecast.forecast == 'sunny'}"><img width=100px src="img/weather/sunny.png"></c:when>
+						<c:when test="${forecast.forecast == 'rain'}"><img width=100px src="img/weather/rain.png"></c:when>
+						<c:when test="${forecast.forecast == 'snow'}"><img width=100px src="img/weather/snow.png"></c:when>
+						<c:when test="${forecast.forecast == 'cloudy'}"><img width=100px src="img/weather/cloudy.png"></c:when>
 					</c:choose>
 					</td>
 				</c:forEach>
 			</tr>
 			
-			
-			
-			
-			
-			
-			
-			
-			
 			<!-- HIGH & LOW TEMPERATURE -->
 			<tr>
-				<c:forEach var="forecast" items="${forecast}">
-					<td>High: ${forecast.highTemp} °${displayScale}</td>
-				</c:forEach>
+				<c:forEach var="forecast" items="${forecast}"><td>High: ${forecast.highTemp} °${displayScale}</td></c:forEach>
 			</tr>
 			<tr>
-				<c:forEach var="forecast" items="${forecast}">
-					<td>Low: ${forecast.lowTemp} °${displayScale}</td>
-				</c:forEach>
+				<c:forEach var="forecast" items="${forecast}"><td>Low: ${forecast.lowTemp} °${displayScale}</td></c:forEach>
 			</tr>
 			
 			<!-- WEATHER ADVISORIES -->
@@ -115,6 +187,6 @@
 			</tr>			
 			
 		</table>
-	</div>
+	</div> --%>
 
 </section>
