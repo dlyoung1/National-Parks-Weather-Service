@@ -8,7 +8,7 @@
 		<h3>5 Day Forecast for ${parkDetails.parkName}</h3>
 		
 		<!-- SENDS SESSION DATA TO CONTROLLER FOR TEMPERATURE CONVERSION. -->
-		<c:url var="convertTemp" value="/weather"/>
+		<c:url var="convertTemp" value="/parkSession"/>
 		<a href="${convertTemp}"><button>Convert to ${calcScale}</button></a><br><br>
 		
 		<table>
